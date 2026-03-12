@@ -10,7 +10,7 @@ function ChefTable() {
 
     const fetchChefs = async () => {
 
-        const res = await fetch("http://localhost:4000/api/analytics/chef-performance");
+        const res = await fetch("https://restaurant-pos-mern-1.onrender.com/api/analytics/chef-performance");
         const data = await res.json();
 
         setChefs(data);

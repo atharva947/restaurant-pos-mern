@@ -19,7 +19,7 @@ function Tables() {
 
     const deleteTable = async (id) => {
 
-        await fetch(`http://localhost:4000/api/tables/${id}`, {
+        await fetch(`https://restaurant-pos-mern-1.onrender.com/api/tables/${id}`, {
             method: "DELETE"
         });
 
@@ -28,7 +28,7 @@ function Tables() {
 
     const createTable = async (data) => {
 
-        await fetch("http://localhost:4000/api/tables", {
+        await fetch("https://restaurant-pos-mern-1.onrender.com/api/tables", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = "https://restaurant-pos-mern-1.onrender.com/api";
 
 export const getDashboardStats = async () => {
     const res = await fetch(`${API_BASE}/analytics/dashboard`);
@@ -33,7 +33,7 @@ export const getMenuItems = async () => {
 export const getOrderSummary = async (period) => {
 
     const res = await fetch(
-        `http://localhost:4000/api/analytics/order-summary?period=${period}`
+        `https://restaurant-pos-mern-1.onrender.com/api/analytics/order-summary?period=${period}`
     );
 
     return res.json();
@@ -42,18 +42,18 @@ export const getOrderSummary = async (period) => {
 export const getRevenueData = async (period) => {
 
     const res = await fetch(
-        `http://localhost:4000/api/analytics/revenue?period=${period}`
+        `https://restaurant-pos-mern-1.onrender.com/api/analytics/revenue?period=${period}`
     );
 
     return res.json();
 };
 export const getChefs = async () => {
-    const res = await fetch("http://localhost:4000/api/chefs");
+    const res = await fetch("https://restaurant-pos-mern-1.onrender.com/api/chefs");
     return res.json();
 };
 
 export const assignChef = async (orderId, chefId) => {
-    await fetch(`http://localhost:4000/api/orders/${orderId}/assign`, {
+    await fetch(`https://restaurant-pos-mern-1.onrender.com/api/orders/${orderId}/assign`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json"

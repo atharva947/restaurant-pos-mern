@@ -43,7 +43,7 @@ function Checkout({ cart }) {
         console.log(orderData)
         try {
 
-            const res = await fetch("http://localhost:4000/api/orders", {
+            const res = await fetch("https://restaurant-pos-mern-1.onrender.com/api/orders", {
 
                 method: "POST",
 

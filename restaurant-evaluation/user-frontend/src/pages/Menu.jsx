@@ -23,7 +23,7 @@ function Menu({ cart, setCart }) {
 
     useEffect(() => {
 
-        fetch("http://localhost:4000/api/menu")
+        fetch("https://restaurant-pos-mern-1.onrender.com/api/menu")
             .then(res => res.json())
             .then(data => setMenu(data));
 

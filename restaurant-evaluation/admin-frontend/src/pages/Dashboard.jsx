@@ -31,13 +31,13 @@ function Dashboard() {
 
         try {
 
-            const ordersRes = await fetch("http://localhost:4000/api/orders");
+            const ordersRes = await fetch("https://restaurant-pos-mern-1.onrender.com/api/orders");
             const ordersData = await ordersRes.json();
 
-            const chefsRes = await fetch("http://localhost:4000/api/chefs");
+            const chefsRes = await fetch("https://restaurant-pos-mern-1.onrender.com/api/chefs");
             const chefsData = await chefsRes.json();
 
-            const tablesRes = await fetch("http://localhost:4000/api/tables");
+            const tablesRes = await fetch("https://restaurant-pos-mern-1.onrender.com/api/tables");
             const tablesData = await tablesRes.json();
 
             setStats({
