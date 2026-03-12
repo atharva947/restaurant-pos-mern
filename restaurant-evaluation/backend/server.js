@@ -9,12 +9,13 @@ const analyticsRoutes = require("./routes/analyticsRoutes");
 const connectDB = require("./config/db");
 
 const app = express();
-
-// connect database
 connectDB();
+
 
 app.use(cors());
 app.use(express.json());
+
+// Routes
 app.use("/api/menu", menuRoutes);
 app.use("/api/tables", tableRoutes);
 app.use("/api/chefs", chefRoutes);
@@ -26,7 +27,7 @@ app.get("/", (req, res) => {
     res.send("Backend API Running");
 });
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
