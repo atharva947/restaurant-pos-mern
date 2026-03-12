@@ -1,0 +1,29 @@
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 80px;
+    background: #f5f6fa;
+}
+
+.main-content {
+    flex: 1;
+    padding: 30px;
+    background: #f8f9fb;
+}
+
+.layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.main-section {
+    flex: 1;
+    padding: 30px;
+}
+
+.main-content {
+    width: 100%;
+}
