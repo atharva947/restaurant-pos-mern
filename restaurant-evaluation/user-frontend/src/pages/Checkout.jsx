@@ -72,7 +72,14 @@ function Checkout({ cart }) {
     const [dragX, setDragX] = useState(0)
     const [isDragging, setIsDragging] = useState(false)
 
+    const handleMove = (movementX) => {
+        const x = Math.min(dragX + movementX, 220)
+        setDragX(x)
 
+        if (x > 200) {
+            placeOrder()
+        }
+    }
     return (
 
         <div>
@@ -144,15 +151,23 @@ function Checkout({ cart }) {
 
                     onMouseMove={(e) => {
                         if (!isDragging) return
-                        const x = Math.min(e.movementX + dragX, 220)
-                        setDragX(x)
-
-                        if (x > 200) {
-                            placeOrder()
-                        }
+                        handleMove(e.movementX)
                     }}
 
                     onMouseUp={() => {
+                        setIsDragging(false)
+                        setDragX(0)
+                    }}
+
+                    onTouchStart={() => setIsDragging(true)}
+
+                    onTouchMove={(e) => {
+                        if (!isDragging) return
+                        const touch = e.touches[0]
+                        handleMove(10)
+                    }}
+
+                    onTouchEnd={() => {
                         setIsDragging(false)
                         setDragX(0)
                     }}
