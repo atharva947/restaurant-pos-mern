@@ -136,11 +136,11 @@ exports.completeOrder = async (req, res) => {
         if (!order)
             return res.status(404).json({ message: "Order not found" });
 
-        // change order status
+   
         order.status = "SERVED";
         await order.save();
 
-        // update chef workload
+       
         if (order.chef) {
             const chef = await Chef.findById(order.chef);
 
@@ -150,7 +150,7 @@ exports.completeOrder = async (req, res) => {
             await chef.save();
         }
 
-        // free the table
+    
         if (order.table) {
             const table = await Table.findById(order.table);
 

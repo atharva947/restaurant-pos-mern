@@ -61,7 +61,7 @@ function Orders() {
 
                         <div className={cardClass} key={order._id}>
 
-                            {/* HEADER PANEL */}
+                           
                             <div className="order-header-panel">
                                 <div className="order-header-top">
 
@@ -70,7 +70,6 @@ function Orders() {
                                         <span className="order-id">#{order.orderId.slice(-3)}</span>
                                     </div>
 
-                                    {/* STATUS BADGE */}
                                     {order.status === "SERVED" ? (
 
                                         <span className="badge served">
@@ -115,7 +114,6 @@ function Orders() {
                             </div>
 
 
-                            {/* ITEM BOX */}
                             <div className="order-items-box">
 
                                 {order.items?.map(item => (
@@ -135,7 +133,6 @@ function Orders() {
                             </div>
 
 
-                            {/* ACTION BUTTON */}
                             <div className="order-action">
 
                                 {order.status === "SERVED" ? (

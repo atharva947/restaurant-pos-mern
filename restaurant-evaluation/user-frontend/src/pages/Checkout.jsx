@@ -24,6 +24,9 @@ function Checkout({ cart }) {
 
     const placeOrder = async () => {
 
+        if (orderPlaced) return;
+        setOrderPlaced(true);
+
         const formattedItems = cart.map(item => ({
             menuItemId: item._id,
             quantity: item.qty
@@ -40,7 +43,9 @@ function Checkout({ cart }) {
 
             items: formattedItems
         };
-        console.log(orderData)
+
+        console.log(orderData);
+
         try {
 
             const res = await fetch("https://restaurant-pos-mern-1.onrender.com/api/orders", {
@@ -54,16 +59,28 @@ function Checkout({ cart }) {
                 body: JSON.stringify(orderData)
 
             });
+
             const data = await res.json();
 
             if (res.ok) {
+
                 alert("Order placed successfully");
+
+                setDragX(0);
+                setIsDragging(false);
+
+
             } else {
+
                 alert(data.message);
+                setOrderPlaced(false);
+
             }
+
         } catch (err) {
 
             console.log(err);
+            setOrderPlaced(false);
 
         }
 
@@ -73,13 +90,21 @@ function Checkout({ cart }) {
     const [isDragging, setIsDragging] = useState(false)
 
     const handleMove = (movementX) => {
+
+        if (orderPlaced) return
+
         const x = Math.min(dragX + movementX, 220)
         setDragX(x)
 
-        if (x > 200) {
+        if (x > 200 && !orderPlaced) {
+            setOrderPlaced(true)
             placeOrder()
         }
+
     }
+
+    const [orderPlaced, setOrderPlaced] = useState(false)
+
     return (
 
         <div>

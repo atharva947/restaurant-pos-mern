@@ -1,13 +1,10 @@
 const Table = require("../models/Table");
 
 
-// CREATE TABLE
 exports.createTable = async (req, res) => {
     try {
 
         const { chairs, name } = req.body;
-
-        // find last table number
         const lastTable = await Table.findOne().sort({ tableNumber: -1 });
 
         const newNumber = lastTable ? lastTable.tableNumber + 1 : 1;
@@ -27,8 +24,6 @@ exports.createTable = async (req, res) => {
     }
 };
 
-
-// GET TABLES
 exports.getTables = async (req, res) => {
     try {
 
@@ -41,11 +36,8 @@ exports.getTables = async (req, res) => {
     }
 };
 
-
-// TOGGLE RESERVATION
 exports.toggleReservation = async (req, res) => {
     try {
-
         const table = await Table.findById(req.params.id);
 
         if (!table) {
@@ -80,7 +72,7 @@ exports.deleteTable = async (req, res) => {
 
         await Table.findByIdAndDelete(req.params.id);
 
-        // reorder numbers
+
         const tables = await Table.find().sort({ tableNumber: 1 });
 
         for (let i = 0; i < tables.length; i++) {

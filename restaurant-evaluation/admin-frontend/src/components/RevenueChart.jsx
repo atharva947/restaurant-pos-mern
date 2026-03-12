@@ -26,13 +26,13 @@ function RevenueChart() {
 
         const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-        // create empty week data
+    
         let weekData = days.map(day => ({
             label: day,
             revenue: 0
         }));
 
-        // fill actual revenue
+    
         revenue.forEach(item => {
             const dayIndex = item._id - 1;
             weekData[dayIndex].revenue = item.revenue;
@@ -40,7 +40,7 @@ function RevenueChart() {
 
         setData(weekData);
 
-        // setChartData(formatted);
+        
 
     };
 
